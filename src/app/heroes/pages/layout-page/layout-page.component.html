@@ -1,7 +1,53 @@
-<h1>Heroes Layout</h1>
 
-<router-outlet></router-outlet>
 
-<h5>Footer</h5>
+<mat-sidenav-container fullscreen >
+
+    <!-- SideBar -->
+    <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '45vw'}">
+
+        <!-- SideBar + ToolBar del SideBar -->
+        <mat-toolbar [ngStyle]="{background: '#4CAF50', color: 'white'}">
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon [ngStyle]="{color: 'white'}">menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <!-- Menú -->
+        <mat-nav-list>
+            <mat-list-item 
+            *ngFor="let item of sidebarItems"
+            [routerLink]="item.url"
+            (click)="sidenav.toggle()"
+            >
+            <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+            {{ item.label }}
+
+            </mat-list-item>
+
+        </mat-nav-list>   
+
+           
+    </mat-sidenav>
+
+    <!-- ToolBar Página Principal -->
+    <mat-toolbar [ngStyle]="{background: '#4CAF50', color: 'white'}" >
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon [ngStyle]="{color: 'white'}">menu</mat-icon>
+        </button>
+        <span>Héroes</span>        
+        <span class="spacer"></span>
+        <button mat-button [ngStyle]="{color:'white'}">
+            Logout
+        </button>
+    </mat-toolbar>
+
+    <!-- Contenido de la página -->
+    <div class="container p-5">
+            <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>
 
 
