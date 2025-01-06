@@ -32,5 +32,26 @@ export class HeroesService {
             Object.values(hero).some((value) =>
                 String(value).toLowerCase().includes(query.toLowerCase())))));
   }
+
+  // Crear un nuevo héroe
+  addHero(hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${this.baseUrl}/heroes`, hero);
+  }
+
+  // Actualizar un héroe
+  updateHero(hero: Hero): Observable<Hero> {
+    if(!hero.id) throw Error('Hero is is required');
+    return this.http.patch<Hero>(`${this.baseUrl}/heroes/${hero.id}`, hero);
+  }
+
+  // Eliminar un héroe
+  deleteHeroById(id: string): Observable<boolean> {
+    if(!id) throw Error('Hero id is is required');
+    return this.http.delete(`${this.baseUrl}/heroes/${id}`)
+    .pipe(
+      map(() => true),  // return true if delete is successful
+      catchError(() => of(false)) // return false if delete is not successful
+    );
+  }
 }
 

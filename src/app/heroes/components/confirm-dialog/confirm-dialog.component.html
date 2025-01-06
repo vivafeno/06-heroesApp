@@ -1,0 +1,21 @@
+<h2 mat-dialog-title><strong>Borrar {{data.superhero}}</strong></h2>
+<mat-dialog-content>
+    <strong>Este proceso es irreversible.</strong>
+    <br>
+    <span>¿Deseas continuar?</span>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button
+        (click)="onCancel()"
+        mat-button
+        mat-dialog-close
+        cdkFocusInitial
+        [ngStyle]="{'background-color': 'blue', 'color': 'white' }">
+        No</button>
+    <span class="spacer"></span>
+    <button
+        (click)="onConfirm()"
+        mat-button
+        mat-dialog-close
+        [ngStyle]="{'background-color': 'red', 'color': 'white' }">Ok</button>
+</mat-dialog-actions>

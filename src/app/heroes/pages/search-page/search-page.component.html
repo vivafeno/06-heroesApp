@@ -17,14 +17,14 @@
 
             <mat-option *ngFor="let hero of heroes" [value]="hero">
                 {{hero.superhero}}
-                <button mat-button
+                <!-- <button mat-button
                     mat-raised
                     class="spacer"
                     color="primary"
                     [routerLink]="['/heroes/edit', hero.id]">
                     <mat-icon>edit</mat-icon>
                     Editar
-                </button>
+                </button> -->
             </mat-option>
 
             <mat-option
