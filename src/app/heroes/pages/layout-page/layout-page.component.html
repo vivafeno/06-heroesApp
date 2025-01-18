@@ -7,8 +7,10 @@
 
         <!-- SideBar + ToolBar del SideBar -->
         <mat-toolbar [ngStyle]="{background: '#4CAF50', color: 'white'}">
+          
             <span>Menu</span>
             <span class="spacer"></span>
+           
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon [ngStyle]="{color: 'white'}">menu</mat-icon>
             </button>
@@ -38,7 +40,13 @@
         </button>
         <span>Héroes</span>        
         <span class="spacer"></span>
-        <button mat-button [ngStyle]="{color:'white'}">
+
+        <!-- Muestra nombre usuario -->
+        <span>{{ user?.email}}</span>
+
+        <!-- Botón Logout -->
+        <button mat-button [ngStyle]="{color:'white'}"
+        (click) ="onLogout()">
             Logout
         </button>
     </mat-toolbar>
